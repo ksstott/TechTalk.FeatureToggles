@@ -1,6 +1,6 @@
 # Feature Toggles tech talk
 
-Code demo that occupied a tech talk on feature toggles. To run these demos you'll need the following in your secrets.json and that the docker-compose has the correct mount to load the secrets:
+Code demo that accompanied a tech talk on feature toggles. To run these demos you'll need the following in your secrets.json and that the docker-compose has the correct mount to load the secrets:
 ```json
   "ApplicationInsights": {
     "InstrumentationKey": "",
