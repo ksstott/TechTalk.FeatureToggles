@@ -1,0 +1,18 @@
+version: "3.9"
+services:
+  web:
+    build: .
+    environment:
+      - AllTogglesEnabled
+    volumes: 
+      - /mnt/c/Users/KelvinStott/AppData/Roaming/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+  postman:
+    image: "postman/newman"
+    depends_on: 
+      - web
+    volumes:
+      - ./integrationtests:/etc/newman
+    command: ["run", "-e", "docker-compose.postman_environment.json", "TechTalk.FeatureToggles.postman_collection.json"]
+    # command: ["run", "-e", "docker-compose.postman_environment.json", "TechTalk.FeatureToggles 2.postman_collection.json"]
+    # command: ["run", "-e", "docker-compose.postman_environment.json", "TechTalk.FeatureToggles.postman_collection.json", "-n", "1000", "--delay-request", "200"]
+    # command: ["run", "-e", "docker-compose.postman_environment.json", "TechTalk.FeatureToggles 3.postman_collection.json", "--delay-request", "200", "-d", "data.json"]
